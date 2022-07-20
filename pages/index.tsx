@@ -1,11 +1,23 @@
+/*
+ * @Author: Dylight
+ * @Date: 2022-07-18 17:43:10
+ * @LastEditors: Dylight
+ * @LastEditTime: 2022-07-19 18:24:00
+ * @FilePath: /web3-namcard/pages/index.tsx
+ * @Description: 
+ */
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-
+import useEnsData from "../hooks/useEns";
+import Card from "./components/Card";
+import { Center } from '@chakra-ui/react';
 const Home: NextPage = () => {
+  const { ensData } = useEnsData();
   return (
     <div className={styles.container}>
+
       <Head>
         <title>RainbowKit App</title>
         <meta
@@ -14,7 +26,6 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main className={styles.main}>
         <ConnectButton />
 
@@ -22,7 +33,10 @@ const Home: NextPage = () => {
           Welcome to <a href="">RainbowKit</a> + <a href="">wagmi</a> +{' '}
           <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <Center w={500} h={300}>
+          <Card></Card>
 
+        </Center>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
